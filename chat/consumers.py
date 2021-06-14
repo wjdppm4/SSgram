@@ -1,12 +1,12 @@
-import json
 from channels.generic.websocket import WebsocketConsumer
+import json
 
 class ChatConsumer(WebsocketConsumer):
     def connect(self):
-        self.accept()
+        self.accept() #사용자와 websocket 연결이 맺어졌을때 호출
 
     def disconnect(self, close_code):
-        pass
+        pass #사용자와 websocket 연결이 끊겼을떄 호출
 
     def receive(self, text_data):
         text_data_json = json.loads(text_data)
@@ -14,4 +14,4 @@ class ChatConsumer(WebsocketConsumer):
 
         self.send(text_data=json.dumps({
             'message': message
-        }))
+        })) # 사용자가 메시지를 보내면 호출 됨

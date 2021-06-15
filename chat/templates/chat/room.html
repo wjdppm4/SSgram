@@ -1,14 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
+    {% load static %}
     <meta charset="utf-8"/>
-    <title>Chat Room</title>
+    <meta name= "room_1" content="width=device-width, initial-scale=1.0">
+    <title>채팅방</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'main.css'%}">
 </head>
+<style>
+body {
+    background-image: url('https://wallpapercave.com/wp/wp2757834.gif');
+    background-repeat: no-repeat;
+    background-size: cover;    
+}
+.jb-wrap {
+    padding: 100px 0px;
+    }
+h1 {
+    padding: 55px 0px;
+    text-align: center;
+    }
+h2 {
+    padding: 20px 0px;
+    text-align: center;
+    color:white
+}
+</style>
 <body>
-    <textarea id="chat-log" cols="100" rows="20"></textarea><br>
-    <input id="chat-message-input" type="text" size="100"><br>
+    <h2 style="font-size: 40px">
+        {{room_name}}
+    </h2>
+    <h1>
+    <textarea id="chat-log" cols="100" rows="40" style="border:none; color:white; background-color:transparent; resize: none;"></textarea><br>
+    <input id="chat-message-input" type="text" size="70">
     <input id="chat-message-submit" type="button" value="Send">
     {{ room_name|json_script:"room-name" }}
+    </h1>
     <script>
         const roomName = JSON.parse(document.getElementById('room-name').textContent);
 

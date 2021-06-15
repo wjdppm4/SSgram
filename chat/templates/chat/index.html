@@ -1,15 +1,33 @@
 <!-- chat/templates/chat/index.html -->
 <!DOCTYPE html>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 <html>
 <head>
     <meta charset="utf-8"/>
     <title>Chat Rooms</title>
 </head>
+<style>
+body {
+    background-image: url('https://wallpapercave.com/wp/wp2757834.gif');
+    background-repeat: no-repeat;
+    background-size: cover;    
+}
+.jb-wrap {
+    padding: 100px 0px;
+    }
+h1 {
+    padding: 20px 0px;
+    text-align: center;
+    color: #ffffff;
+    }
+</style>
 <body>
-    What chat room would you like to enter?<br>
-    <input id="room-name-input" type="text" size="100"><br>
+    <div class="jb-wrap">
+    <h1>입장하실 채팅방 이름을 입력해주세요.<br>
+    <input id="room-name-input" type="text" size="50"><br>
     <input id="room-name-submit" type="button" value="Enter">
-
+    </h1>
     <script>
         document.querySelector('#room-name-input').focus();
         document.querySelector('#room-name-input').onkeyup = function(e) {
@@ -23,5 +41,6 @@
             window.location.pathname = '/chat/' + roomName + '/';
         };
     </script>
+    </div>
 </body>
 </html>
